@@ -28,6 +28,7 @@ namespace karakterek
 		public int Eletero { get => eletero; set => eletero = value; }
 		public int Ero { get => ero; set => ero = value; }
 
+		
 		public override string? ToString()
 		{
 			return $"{nev}-{szint}/{eletero}/{ero}";
