@@ -12,8 +12,9 @@
 
 			Console.WriteLine(AtlagSzint(karakterek));
 
-			Eroszint(karakterek);
-		}
+            Console.WriteLine(BiggerE(karakterek,80,0));
+
+        }
 
 		static void Beolvasas(string filenev, List<Karakter> karakterek)
 		{
@@ -95,6 +96,18 @@
                 Console.WriteLine(character);
                 Console.WriteLine();
             }
+		}
+
+		static bool BiggerE(List<Karakter> karakterek, int comp, int sorszam)
+		{
+			bool valasz=false;
+			int strength = karakterek[sorszam].Ero;
+
+			if ( strength>= comp)
+			{
+				valasz = true;
+			}
+			return valasz;
 		}
 	}
 }
