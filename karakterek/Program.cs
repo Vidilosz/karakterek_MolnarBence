@@ -9,7 +9,9 @@
 			Beolvasas("karakterek.txt", karakterek);
 
             Console.WriteLine(LegmagasabbEletero(karakterek));
-		}
+
+            Console.WriteLine(AtlagSzint(karakterek));
+        }
 
 		static void Beolvasas(string filenev, List<Karakter> karakterek)
 		{
@@ -45,5 +47,17 @@
 			return (karakterek[snapshot].Nev,karakterek[snapshot].Szint,karakterek[snapshot].Ero);
 		}
 
+
+		static int AtlagSzint(List<Karakter> karakterek)
+		{
+			int sum = 0;
+			int div = 0;
+			foreach (var character in karakterek)
+			{
+				div++;
+				sum += character.Szint;
+			}
+			return sum/div;
+		}
 	}
 }
