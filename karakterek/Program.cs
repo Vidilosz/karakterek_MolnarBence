@@ -7,10 +7,8 @@
 			List<Karakter> karakterek = [];
 
 			Beolvasas("karakterek.txt", karakterek);
-			foreach (var k in karakterek)
-			{
-				Console.WriteLine(k);
-			}
+
+            Console.WriteLine(LegmagasabbEletero(karakterek));
 		}
 
 		static void Beolvasas(string filenev, List<Karakter> karakterek)
@@ -28,5 +26,24 @@
 				karakterek.Add(karakter);
 			}
 		}
+
+		static (string, int, int) LegmagasabbEletero(List<Karakter> karakterek)
+		{
+			int mostbuff = 0;
+			int counter = 0;
+			int snapshot = 0;
+
+			foreach (var character in karakterek)
+			{
+				counter++;
+				if (character.Eletero > mostbuff)
+				{
+					mostbuff = character.Eletero;
+					snapshot = counter-1;
+				}
+			}
+			return (karakterek[snapshot].Nev,karakterek[snapshot].Szint,karakterek[snapshot].Ero);
+		}
+
 	}
 }
