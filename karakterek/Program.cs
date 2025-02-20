@@ -36,6 +36,8 @@
 
 			RankinMaxinOrEvenFlexin(karakterek);
 
+			BrWinner(karakterek);
+
         }
 
 		static void Beolvasas(string filenev, List<Karakter> karakterek)
@@ -191,5 +193,13 @@
 			}
 		}
 
+		static void BrWinner(List<Karakter> karakterek)
+		{
+			var brbuff = karakterek.OrderByDescending(x => x.Szint + x.Ero).Take(1);
+            foreach(var character in brbuff)
+			{
+                Console.WriteLine($"{character.Nev}/{character.Szint}/{character.Eletero}/{character.Ero}");
+			}
+		}
     }
 }
