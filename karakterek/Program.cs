@@ -14,6 +14,8 @@
 
             Console.WriteLine(BiggerE(karakterek,80,0));
 
+			Nagyobbak(karakterek,49);
+
         }
 
 		static void Beolvasas(string filenev, List<Karakter> karakterek)
@@ -108,6 +110,18 @@
 				valasz = true;
 			}
 			return valasz;
+		}
+
+
+		static void Nagyobbak(List<Karakter> karakterek, int mini)
+		{
+			foreach (var character in karakterek)
+			{
+				if (character.Ero > mini)
+				{
+                    Console.WriteLine(character);
+				}
+			}
 		}
 	}
 }
