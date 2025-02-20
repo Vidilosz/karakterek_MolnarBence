@@ -30,7 +30,9 @@
 
             Console.WriteLine(BiggerE(karakterek,80,0));
 
-			Nagyobbak(karakterek,49);
+			Nagyobbak(karakterek,59);
+
+			Topharom(karakterek);
 
         }
 
@@ -167,6 +169,15 @@
                 }
             }
             return karakterek;
+        }
+
+		static void Topharom(List<Karakter> karakterek)
+		{
+            var top3 = karakterek.OrderByDescending(k => k.Szint + k.Ero).Take(3);
+			foreach(var character in top3)
+			{
+                Console.WriteLine($"{character.Nev}-{character.Szint}-{character.Ero}");
+			}
         }
     }
 }
