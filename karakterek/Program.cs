@@ -8,7 +8,23 @@
 
 			Beolvasas("karakterek.txt", karakterek);
 
-			Console.WriteLine(LegmagasabbEletero(karakterek));
+            Console.WriteLine("Eredeti karakterek:");
+            foreach (var karakter in karakterek)
+            {
+                Console.WriteLine(karakter);
+            }
+
+            MentesCSV("karakterek.csv", karakterek);
+            Console.WriteLine("Karakterek elmentve CSV fájlba.");
+
+            List<Karakter> beolvasottKarakterek = BeolvasasCSV("karakterek.csv");
+            Console.WriteLine("Beolvasott karakterek:");
+            foreach (var karakter in beolvasottKarakterek)
+            {
+                Console.WriteLine(karakter);
+            }
+
+            Console.WriteLine(LegmagasabbEletero(karakterek));
 
 			Console.WriteLine(AtlagSzint(karakterek));
 
@@ -123,5 +139,34 @@
 				}
 			}
 		}
-	}
+
+        static void MentesCSV(string fajlnev, List<Karakter> karakterek)
+        {
+            using StreamWriter sw = new StreamWriter(fajlnev);
+            sw.WriteLine("Nev;Szint;Eletero;Ero");
+            foreach (var karakter in karakterek)
+            {
+                sw.WriteLine($"{karakter.Nev};{karakter.Szint};{karakter.Eletero};{karakter.Ero}");
+            }
+        }
+
+        static List<Karakter> BeolvasasCSV(string fajlnev)
+        {
+            List<Karakter> karakterek = new List<Karakter>();
+            using StreamReader sr = new StreamReader(fajlnev);
+            sr.ReadLine();
+
+            while (!sr.EndOfStream)
+            {
+                string sor = sr.ReadLine();
+                string[] adatok = sor.Split(';');
+                if (adatok.Length == 4)
+                {
+                    Karakter karakter = new Karakter(adatok[0], Convert.ToInt32(adatok[1]), Convert.ToInt32(adatok[2]), Convert.ToInt32(adatok[3]));
+                    karakterek.Add(karakter);
+                }
+            }
+            return karakterek;
+        }
+    }
 }
