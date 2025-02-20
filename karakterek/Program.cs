@@ -34,6 +34,8 @@
 
 			Topharom(karakterek);
 
+			RankinMaxinOrEvenFlexin(karakterek);
+
         }
 
 		static void Beolvasas(string filenev, List<Karakter> karakterek)
@@ -179,5 +181,15 @@
                 Console.WriteLine($"{character.Nev}-{character.Szint}-{character.Ero}");
 			}
         }
+
+		static void RankinMaxinOrEvenFlexin(List<Karakter> karakterek)
+		{
+			var rangsor = karakterek.OrderByDescending(x => x.Eletero + x.Ero);
+			foreach(var character in rangsor)
+			{
+                Console.WriteLine($"{character.Nev}--{character.Szint}--{character.Eletero}--{character.Ero}");
+			}
+		}
+
     }
 }
